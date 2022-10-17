@@ -1,0 +1,77 @@
+@import url('./header.css');
+:root{
+    --water:#5CC8F2;
+    --grass:#C1D98F;
+    --fire:#D94A4A;
+    --electric:#F2CD5C;
+    --ground:#BF9663;
+    --psychic:#D9628D;
+    --normal:#e9dea9;
+    --bug:#34EB6E;
+    --poison:#D4ADD9;
+    --fairy:#F299B9;
+    --fighting:#D15D61;
+    --rock:#534E2C;
+    --ghost:#573858;
+}
+.pokedex-list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    background-color: var(--grass);
+    border-radius: 16px;
+    width: 48%;
+    margin: 0.2rem;
+}
+.card #number{
+    width: 100%;
+    text-align: -webkit-right;
+    padding: 0.5rem;
+    padding-bottom: 0;
+    color: rgb(255,255,255,0.2);
+    font-weight: 900;
+}
+.card #name{
+    width: 100%;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #FFF;
+    position: relative;
+    left: 1rem;
+}
+.card-body{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+.card-body ol{
+    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
+    list-style: none;
+    
+}
+.card-body ol li{
+    width: 55px;
+    background-color: rgb(255,255,255,0.2);
+    color: #FFFF;
+    border-radius: 24px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px;
+    margin-bottom: 8px;
+}
+.poke-image{
+    background-image: url(../img/Pokeball.png);
+      background-size: cover;
+}
+
