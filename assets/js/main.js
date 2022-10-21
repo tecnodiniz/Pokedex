@@ -1,11 +1,13 @@
 
-// Create elements functions
+// Create elements functions <li>
 function getPokemeonBaseStatusName(name){
     return`<li>${name}</li>`
 }
+
 function getPokemeonBaseStatus(status){
 return `<li> ${status}</li>`
 }
+
 function getPokemonAbilities(ability){
     return` ${ability.name}`
 }
@@ -13,7 +15,7 @@ function getPokemonAbilities(ability){
 function getPokemonTypes(type){
     return `<li>${type.name}</li>`
 }
-
+//Create elements to put into a section
 function handleAddPokemon(pokemon){ 
 
     return `
@@ -33,7 +35,7 @@ function handleAddPokemon(pokemon){
 </li>
     `
 }
-
+//OnFind functions are triggered when the pokemon is lodade by search
 function handleAddPokemonOnFind(pokemon){ 
 
     return `
@@ -53,8 +55,7 @@ function handleAddPokemonOnFind(pokemon){
 </li>
     `
 }
-
-
+//function that work when a pokemon card is clicked
 function handlePokemonAbout(pokemon){
     return `
     
@@ -224,13 +225,9 @@ function handlePokemonAboutOnFind(pokemon){
     
     `
 }
-
-
 // Event Listener functions
-
 btn = document.getElementById('more')
-
-
+//I decided to use Jquery after creating this function EventListener
 btn.addEventListener('click',function(){
     let offset = pokeAPI.offset
     let limite = pokeAPI.limite
@@ -252,21 +249,18 @@ btn.addEventListener('click',function(){
     pokeAPI.offset = offset
 })
 
-
-
-
 //Events functions
 function getValue(valor){
+    let id = valor
+    let list = pokeAPI.pokemons
+
     document.getElementById('pokemons-list').style.display = "none";
     document.getElementById('header').style.display = "none";
     document.getElementById('pokemon-content').style.display = "block";
 
     location.href="#pokemon-about";
 
-    let id = valor
-    let lista = pokeAPI.pokemons
-
-    lista.map(pokemon => {
+    list.map(pokemon => {
         if(pokemon.id == id){
             // console.log(pokemon.id+"\n"+pokemon.name+"\n"+pokemon.sprites.front_default)
             document.getElementById('pokemon-content').innerHTML = handlePokemonAbout(pokemon)
@@ -274,16 +268,15 @@ function getValue(valor){
             scroll(0,0);
 
             // console.log(pokemon.sprites.other['official-artwork'].front_default)
-
+            
+            //navbar in pokemon about section
             $('#poke-header li').on('click',function(){
                 let liClass = $(this).attr('class')
                 $('#poke-card').find('li.active').removeClass('active');
                 $('#poke-card').find('li.'+liClass).toggleClass('active');
                
-                
                 // $(this).addClass('active');
               
-                
             });
 
         }
@@ -313,11 +306,8 @@ function getValueOnFind(valor){
                 let liClass = $(this).attr('class')
                 $('#poke-card').find('li.active').removeClass('active');
                 $('#poke-card').find('li.'+liClass).toggleClass('active');
-               
-                
                 // $(this).addClass('active');
               
-                
             });
 
         }
@@ -366,6 +356,12 @@ function handleTypeColor(handleType){
             break;
         case 'ghost':
             card = "background-color: var(--ghost)";
+            break;
+        case 'ice':
+            card = "background-color: var(--ice)";
+            break;
+        case 'dragon':
+            card = "background-color: var(--dragon)";
             break;
         default:
             card = "background-color: var(--normal)";

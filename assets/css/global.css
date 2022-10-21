@@ -2,7 +2,6 @@
     margin: 0;
     box-sizing: border-box;
     
-
 }
 body{
     background-color: #262322;
@@ -37,7 +36,6 @@ img{
 .btn-more:hover{
     background-color: rgb(232 203 0);
 }
-
 
 .pagination{
     text-align: center;

@@ -1,5 +1,5 @@
 
-
+//Object that contains the API results
 const pokeAPI = {
     offset:0,
     limite:10,
@@ -8,16 +8,17 @@ const pokeAPI = {
     pokeAll: []
 };
 
+//handle each pokemon url
 pokeAPI.getDetails = (url) =>{
     return fetch(url).then((response) => response.json());
-
 }
-pokeAPI.getEvo = (url)=>{
 
+//handle each pokemon evolution url
+pokeAPI.getEvolution = (url)=>{
     return fetch(url).then((response) =>response.json());
 }
 
-// Pokemons
+// Pokemons consuming API method
 pokeAPI.getPokemons = (offset = 0,limit = 10) => {
     const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
     return fetch(url)
@@ -26,6 +27,8 @@ pokeAPI.getPokemons = (offset = 0,limit = 10) => {
     .then((details) => Promise.all (details.map(poke => pokeAPI.getDetails(poke.url))))
     .catch((error) => console.log(error))
 }
+
+//Calling method, then access objetcs
 pokeAPI.getPokemons().then(pokemons =>{
     // console.log(pokemons)
     pokemons.map(pokemon=>{pokeAPI.pokemons.push(pokemon)})
@@ -33,7 +36,7 @@ pokeAPI.getPokemons().then(pokemons =>{
     
 })
 
-// Getting All
+// Get Object at once, then storage into pokeAPI.pokeAll
 pokeAPI.getAll = (offset = 0,limit = 151) => {
     const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
     return fetch(url)
@@ -64,19 +67,19 @@ pokeAPI.getAll().then(pokemons=>{
       
 // })
 
-function seeEvolves(id){
-    let evolutions = []
+// function seeEvolves(id){
+//     let evolutions = []
 
-    if(evolution.evolves_to.length > 0){
-        evolutions.push(evolution.evolves_to[0].species.name)
+//     if(evolution.evolves_to.length > 0){
+//         evolutions.push(evolution.evolves_to[0].species.name)
         
-        if(evolution.evolves_to[0].evolves_to.length > 0){
-            evolutions.push(evolution.evolves_to[0].evolves_to[0].species.name)
+//         if(evolution.evolves_to[0].evolves_to.length > 0){
+//             evolutions.push(evolution.evolves_to[0].evolves_to[0].species.name)
 
-        }else console.log('sem evolução')
+//         }else console.log('sem evolução')
 
-    }else console.log('sem evolução')
+//     }else console.log('sem evolução')
 
-}
+// }
 
 
