@@ -1,11 +1,23 @@
 
+// Create elements functions
+function getPokemeonBaseStatusName(name){
+    return`<li>${name}</li>`
+}
+function getPokemeonBaseStatus(status){
+return `<li> ${status}</li>`
+}
+function getPokemonAbilities(ability){
+    return` ${ability.name}`
+}
+
 function getPokemonTypes(type){
     return `<li>${type.name}</li>`
 }
 
-function handleAddPokemon(pokemon){  
+function handleAddPokemon(pokemon){ 
+
     return `
-    <li class="card" style = "${handleTypeColor(pokemon.types[0].type.name)}">
+    <li id="${pokemon.id}" class="card" style = "${handleTypeColor(pokemon.types[0].type.name)}" value = "${pokemon.id}" onclick="getValue(this.value)">
     
     <span id="number">${handleNumber(pokemon.id)}</span>
     <span id="name">${pokemon.name}</span>
@@ -22,18 +34,296 @@ function handleAddPokemon(pokemon){
     `
 }
 
+function handleAddPokemonOnFind(pokemon){ 
+
+    return `
+    <li id="${pokemon.id}" class="card" style = "${handleTypeColor(pokemon.types[0].type.name)}" value = "${pokemon.id}" onclick="getValueOnFind(this.value)">
+    
+    <span id="number">${handleNumber(pokemon.id)}</span>
+    <span id="name">${pokemon.name}</span>
+    <div class="card-body">
+        <ol>
+           ${pokemon.types.map((type) => getPokemonTypes(type.type)).join('')}
+        </ol>
+        <div class="poke-image">
+        <img width="100px" height="100px"
+        src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+        </div>
+    </div>
+</li>
+    `
+}
+
+
+function handlePokemonAbout(pokemon){
+    return `
+    
+    <div id ="pokemon-about" class="content pokemon-about" style ="${handleTypeColor(pokemon.types[0].type.name)}">
+    
+    <button class="font-a" onClick = 'backToList(${pokemon.id})'>
+    <i class="fa-solid fa-arrow-left-long"></i>
+    </button>
+            <div class="card card-about">    
+            <div class="name-type">
+                <h1>${pokemon.name}</h1>
+                <ol class="d-flex">
+                ${pokemon.types.map((type) => getPokemonTypes(type.type)).join('')}
+                 </ol>
+        
+            </div>
+           
+        
+            <span >${handleNumber(pokemon.id)}</span>
+        
+            <div class="poke-img">
+                <img width="200px" height="200px"
+                src="${pokemon.sprites.other['official-artwork'].front_default}">   
+            </div>
+        </div>
+        
+        <div class="pokemon-info" id="poke-card">
+        
+                <div id="poke-header">
+                     <ul class="poke-navbar">
+                        <li class="active t-about"> About</li>
+                        <li class="t-base">Base Status</li>
+                        <li class="t-evolutions">Evolutions</li>
+                        <li class="t-moves">Moves</li>
+                    </ul>
+
+                </div>
+                
+                <div id="info-content">
+
+                    <ul>
+                        <li class="active t-about">
+                            <div class="d-flex" id="poke-info">
+                                <ol class="details-a">
+                                    <li>Height</li>
+                                    <li>Weight</li>
+                                    <li>Abilities</li>
+                                </ol>
+                                <ol class="details-b">
+                                    <li> ${(pokemon.height /10)} cm</li>
+                                    <li>${(pokemon.weight /10)} kg</li>
+                                    <li>${pokemon.abilities.map((poke) => getPokemonAbilities(poke.ability))} </li>
+                                  
+                                </ol>
+
+                            </div>
+                          
+                        </li>
+                        <li class="t-base">
+                           <div class="d-flex" id="poke-info">
+                                <ol class="details-a">
+                                    ${pokemon.stats.map((poke) => getPokemeonBaseStatusName(poke.stat.name)).join('')} 
+                                </ol>
+                                <ol class="details-b">
+                                    ${pokemon.stats.map((poke) => getPokemeonBaseStatus(poke.base_stat)).join('')} 
+                                  
+                                </ol>
+
+                            </div>
+
+                        
+                        </li>
+                        <li class="t-evolutions"></li>
+                        <li class="t-moves"></li>
+                    </ul>
+
+                </div>
+                   
+        </div>
+
+        </div>
+    
+    `
+}
+
+function handlePokemonAboutOnFind(pokemon){
+    return `
+    
+    <div id ="pokemon-about" class="content pokemon-about" style ="${handleTypeColor(pokemon.types[0].type.name)}">
+    
+    <button class="font-a" onClick = 'backToListOnFind(${pokemon.id})'>
+    <i class="fa-solid fa-arrow-left-long"></i>
+    </button>
+            <div class="card card-about">    
+            <div class="name-type">
+                <h1>${pokemon.name}</h1>
+                <ol class="d-flex">
+                ${pokemon.types.map((type) => getPokemonTypes(type.type)).join('')}
+                 </ol>
+        
+            </div>
+           
+        
+            <span >${handleNumber(pokemon.id)}</span>
+        
+            <div class="poke-img">
+                <img width="200px" height="200px"
+                src="${pokemon.sprites.other['official-artwork'].front_default}">   
+            </div>
+        </div>
+        
+        <div class="pokemon-info" id="poke-card">
+        
+                <div id="poke-header">
+                     <ul class="poke-navbar">
+                        <li class="active t-about"> About</li>
+                        <li class="t-base">Base Status</li>
+                        <li class="t-evolutions">Evolutions</li>
+                        <li class="t-moves">Moves</li>
+                    </ul>
+
+                </div>
+                
+                <div id="info-content">
+
+                    <ul>
+                        <li class="active t-about">
+                            <div class="d-flex" id="poke-info">
+                                <ol class="details-a">
+                                    <li>Height</li>
+                                    <li>Weight</li>
+                                    <li>Abilities</li>
+                                </ol>
+                                <ol class="details-b">
+                                    <li> ${(pokemon.height /10)} cm</li>
+                                    <li>${(pokemon.weight /10)} kg</li>
+                                    <li>${pokemon.abilities.map((poke) => getPokemonAbilities(poke.ability))} </li>
+                                  
+                                </ol>
+
+                            </div>
+                          
+                        </li>
+                        <li class="t-base">
+                           <div class="d-flex" id="poke-info">
+                                <ol class="details-a">
+                                    ${pokemon.stats.map((poke) => getPokemeonBaseStatusName(poke.stat.name)).join('')} 
+                                </ol>
+                                <ol class="details-b">
+                                    ${pokemon.stats.map((poke) => getPokemeonBaseStatus(poke.base_stat)).join('')} 
+                                  
+                                </ol>
+
+                            </div>
+
+                        
+                        </li>
+                        <li class="t-evolutions">C</li>
+                        <li class="t-moves">D</li>
+                    </ul>
+
+                </div>
+                   
+        </div>
+
+        </div>
+    
+    `
+}
+
+
+// Event Listener functions
+
 btn = document.getElementById('more')
+
+
 btn.addEventListener('click',function(){
     let offset = pokeAPI.offset
     let limite = pokeAPI.limite
-    offset += limite
+
+    offset += limite;
 
     pokeAPI.getPokemons(offset,limite).then(pokemons =>{
-        console.log(pokemons)
-        document.getElementById('pokedex-list').innerHTML += pokemons.map(handleAddPokemon).join('');
+        // console.log(pokemons)
+        pokemons.map(pokemon=>{pokeAPI.pokemons.push(pokemon)})
+        pokemons.map(pokemon=>{
+            lista = document.getElementById('pokedex-list');
+            return pokemon.id <= 151 ? lista.innerHTML += handleAddPokemon(pokemon) : btn.disabled = true;
+           
+        })
+        
     })
+ 
+
     pokeAPI.offset = offset
 })
+
+
+
+
+//Events functions
+function getValue(valor){
+    document.getElementById('pokemons-list').style.display = "none";
+    document.getElementById('header').style.display = "none";
+    document.getElementById('pokemon-content').style.display = "block";
+
+    location.href="#pokemon-about";
+
+    let id = valor
+    let lista = pokeAPI.pokemons
+
+    lista.map(pokemon => {
+        if(pokemon.id == id){
+            // console.log(pokemon.id+"\n"+pokemon.name+"\n"+pokemon.sprites.front_default)
+            document.getElementById('pokemon-content').innerHTML = handlePokemonAbout(pokemon)
+
+            scroll(0,0);
+
+            // console.log(pokemon.sprites.other['official-artwork'].front_default)
+
+            $('#poke-header li').on('click',function(){
+                let liClass = $(this).attr('class')
+                $('#poke-card').find('li.active').removeClass('active');
+                $('#poke-card').find('li.'+liClass).toggleClass('active');
+               
+                
+                // $(this).addClass('active');
+              
+                
+            });
+
+        }
+    })
+
+}
+
+function getValueOnFind(valor){
+    document.getElementById('search-result').style.display = "none";
+    document.getElementById('header').style.display = "none";
+    document.getElementById('pokemon-content').style.display = "block";
+
+    location.href="#pokemon-about";
+
+    let id = valor
+    let lista = pokeAPI.pokeAll
+
+    lista.map(pokemon => {
+        if(pokemon.id == id){
+            // console.log(pokemon.id+"\n"+pokemon.name+"\n"+pokemon.sprites.front_default)
+            document.getElementById('pokemon-content').innerHTML = handlePokemonAboutOnFind(pokemon)
+            // console.log(pokemon.sprites.other['official-artwork'].front_default)
+
+            scroll(0,0);
+
+            $('#poke-header li').on('click',function(){
+                let liClass = $(this).attr('class')
+                $('#poke-card').find('li.active').removeClass('active');
+                $('#poke-card').find('li.'+liClass).toggleClass('active');
+               
+                
+                // $(this).addClass('active');
+              
+                
+            });
+
+        }
+    })
+
+}
 
 function handleTypeColor(handleType){
     var card = "";
@@ -94,8 +384,21 @@ function handleNumber(id){
     return number;
 }
 
+function backToList(id){
+    document.getElementById('pokemons-list').style.display = "block";
+    document.getElementById('header').style.display = "block";
+    document.getElementById('pokemon-about').style.display = "none";
 
+    location.href = `#${id}`;
+}
 
+function backToListOnFind(id){
+    document.getElementById('search-result').style.display = "block";
+    document.getElementById('header').style.display = "block";
+    document.getElementById('pokemon-about').style.display = "none";
+
+    location.href = `#${id}`;
+}
 
 
 

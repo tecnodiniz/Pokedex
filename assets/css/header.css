@@ -1,11 +1,26 @@
-.brand{
-    background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a3e65d21-5e60-42d8-a8b4-cdd8e34ce885/d3415su-2396b8da-f3f8-4979-ba9f-a0dc381500c8.png/v1/fill/w_900,h_563,q_80,strp/pokeball_wallpaper_2_by_aervormund_d3415su-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTYzIiwicGF0aCI6IlwvZlwvYTNlNjVkMjEtNWU2MC00MmQ4LWE4YjQtY2RkOGUzNGNlODg1XC9kMzQxNXN1LTIzOTZiOGRhLWYzZjgtNDk3OS1iYTlmLWEwZGMzODE1MDBjOC5wbmciLCJ3aWR0aCI6Ijw9OTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.KlYWLMAv21kCZ0etvwYKlFsNU-pgqBlG8Z53VUhfx2I);
-    background-repeat: no-repeat;
-    background-position-y: center;
-    background-size: cover;
-    
-    height: 10rem;
+.header{
     width: 100%;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    background-color: #8C072B;
+    transition: padding 0.3s ease-out;
+ 
+}
 
-
+.header input{
+    padding: 0.4rem;
+}
+.brand{
+    width: 100%;
+    margin-bottom: 0.15em;
+    font-size: 2rem;
+    transition: font-size 0.3s ease-out;
+}
+.brand a{
+    text-decoration: none;
+    color: #FFF;
+    
+    font-weight: 900;
+   
 }

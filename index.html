@@ -17,20 +17,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/pokedex.css">
     <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/utilities.css">
+ 
+    <script src="https://kit.fontawesome.com/3121a11f8a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  
+
+
+
+
+
 </head>
 
-<body>
-    <section>
-        <header>
-            <nav>
-                <div class="brand">
+<body class="notranslate" translate="no">
+    <section class="header" id="header">
+        <div class="nav">
+            <div class="poke-nav" id="poke-nav">
+                <div class="brand" id="brand">
+                    <a href="#">Pokémon</a>
+                </div>
+                <div class="form">
+                    <input type="text" id="search-pokemon" name="search" placeholder="Name or Type"/>
 
                 </div>
-            </nav>
+              
+           </div>
 
-        </header>
+        </div>
+       
+           
+   
     </section>
-    <section class="content notranslate" translate="no">
+
+    <section id="pokemons-list" class="content notranslate" translate="no" >
+      
         <h1>Pokedex</h1>
 
         <ol class="pokedex-list" id="pokedex-list">
@@ -38,23 +58,111 @@
           
         </ol>
 
-        <dir class="pagination">
+        <div class="pagination">
             <button id="more" class="btn-more">more</button>
-        </dir>
-        
+        </div>
+
+    
+
     </section>
-    <section>
-        <footer>
-             <strong>Pokedéx</strong>
-             <img style="animation: spin 2.5s linear infinite;" src="https://www.pngmart.com/files/2/Pokeball-PNG-Image.png" width="50px" height="50px" alt="Pokeball">
-            <small>Eduardo Diniz</small>
-        </footer>
+
+    <section id="pokemon-content" class="pokemon-content">
+
+    </section>
+
+    <section id="search-result" class="content"> 
+        <ol class="pokedex-list" id="pokedex-list-find">
+        </ol>
+
+    </section>
+   
+
         
+      
+
+
+
+    
+
+ 
+
+  
+
+    <!-- Footer -->
+    <section class="footer-content">
+        <footer>
+            
+                <strong>Pokedéx</strong>
+                <img  src="https://www.pngmart.com/files/2/Pokeball-PNG-Image.png" width="50px" height="50px" alt="Pokeball">
+               <small>Eduardo Diniz</small>
+
+           
+
+        </footer>
+           
+
+
+        
+            
+       
+
     </section>
 
     <script src="./assets/js/pokemon-api.js" type="text/javascript"></script>
     <script src="./assets/js/main.js" type="text/javascript"></script>
-    
+   
+    <script type="text/javascript">
+
+
+        $(window).ready(function(){
+            // Events
+            $('#search-pokemon').on('input', function(e){
+                $('#search-result').find('li').remove('.card');
+                document.getElementById('pokemons-list').style.display = "block";
+                document.getElementById('search-result').style.display = "none";
+
+                if(e.target.value == ""){
+                    document.getElementById('pokemons-list').style.display = "block";
+                    $('#search-result').find('li').remove('.card');
+                }
+                
+                 pokeAPI.pokeAll.map(pokemon =>{
+                    
+
+                    if(pokemon.name == e.target.value.toLowerCase() || pokemon.types[0].type.name == e.target.value.toLowerCase()){
+                        
+                        document.getElementById('pokemons-list').style.display = "none";
+                        document.getElementById('search-result').style.display = "block";
+                        // console.log(pokemon)     
+                        lista = document.getElementById('pokedex-list-find');
+                        scroll(0,0);
+                        return pokemon.id <= 151 ? lista.innerHTML += handleAddPokemonOnFind(pokemon) : btn.disabled = true;                                                       
+                        
+                        
+                    }
+                 })
+                 })
+
+
+                //  Hidding header
+                 $(document).on('scroll',function(){
+                    if(scrollY > 130){
+                        document.getElementById('header').style.padding = "0.5rem";
+                        document.getElementById('brand').style.fontSize = "0";
+                    }else{
+                        document.getElementById('header').style.padding = "1rem";
+                        document.getElementById('brand').style.fontSize = "2rem";
+                    }
+                   
+                 })
+
+        })
+       
+
+       
+
+        
+    </script>
     
 </body>
 
