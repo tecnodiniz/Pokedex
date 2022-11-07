@@ -82,7 +82,12 @@
     font-weight: 500;
     padding: 4px;
     margin-bottom: 8px;
+    
 }
+.pokedex-list{
+    cursor: pointer;
+}
+
 .poke-image{
     background-image: url(../img/Pokeball.png);
       background-size: cover;
@@ -222,6 +227,7 @@
     color: #FFFFFF;
     font-size: 1.55em;
     transition: color .2s;
+    cursor: pointer;
 }
 .font-a :hover{
     color: #a2a2a2e3;
