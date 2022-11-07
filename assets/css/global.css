@@ -4,15 +4,17 @@
     
 }
 body{
-    background-color: #262322;
+    background: #2c2b2b;
+    
     font-family: 'Roboto', sans-serif;
 }
 .content{
     padding: 1rem;
     padding-top: 0;
-    margin-top: 7rem;
+    margin-top: 10rem;
     min-height: 100vh;
-    background-color: #ffffff;
+    background-color: #fff;
+    
    
 }
 
@@ -74,9 +76,11 @@ footer{
 }
 /* medium */
 @media screen and (min-width: 768px ){
+
     
     .content{
         padding: 3rem;
+        
     }
     .pokedex-list{
         grid-template-columns: 1fr 1fr 1fr!important;
@@ -84,10 +88,15 @@ footer{
 }
 /* large */
 @media screen and (min-width: 992px ){
+    body{
+        background: url('../img/bg-pokemon.jpg') fixed;
+    }
     .content {
         margin: 0 auto;
         padding: 5rem;
         width: 980px;
+        margin-top: 1rem;
+
     }
    
      .pokedex-list{
@@ -103,6 +112,7 @@ footer{
 }
 /* extra large */
 @media screen and (min-width: 1200px ){
+   
    
 .pokemon-content{
     width: 980px!important;

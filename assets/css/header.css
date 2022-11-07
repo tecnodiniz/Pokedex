@@ -1,9 +1,9 @@
 .header{
     width: 100%;
-    padding: 1rem;
     position: fixed;
     top: 0;
-    background-color: #8C072B;
+    left: 0;
+    padding: 0!important;
     transition: padding 0.3s ease-out;
  
 }

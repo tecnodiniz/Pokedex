@@ -2,7 +2,7 @@
 //Object that contains the API results
 const pokeAPI = {
     offset:0,
-    limite:10,
+    limite:12,
     pokemons:[],
     evolution:[],
     pokeAll: []
@@ -19,7 +19,7 @@ pokeAPI.getEvolution = (url)=>{
 }
 
 // Pokemons consuming API method
-pokeAPI.getPokemons = (offset = 0,limit = 10) => {
+pokeAPI.getPokemons = (offset = 0,limit = 12) => {
     const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
     return fetch(url)
     .then((response) => response.json())

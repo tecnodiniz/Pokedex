@@ -19,7 +19,7 @@ function getPokemonTypes(type){
 function handleAddPokemon(pokemon){ 
 
     return `
-    <li id="${pokemon.id}" class="card" style = "${handleTypeColor(pokemon.types[0].type.name)}" value = "${pokemon.id}" onclick="getValue(this.value)">
+    <li id="${pokemon.id}" class="card card__shadow" style = "${handleTypeColor(pokemon.types[0].type.name)}" value = "${pokemon.id}" onclick="getValue(this.value)">
     
     <span id="number">${handleNumber(pokemon.id)}</span>
     <span id="name">${pokemon.name}</span>
@@ -88,8 +88,7 @@ function handlePokemonAbout(pokemon){
                      <ul class="poke-navbar">
                         <li class="active t-about"> About</li>
                         <li class="t-base">Base Status</li>
-                        <li class="t-evolutions">Evolutions</li>
-                        <li class="t-moves">Moves</li>
+               
                     </ul>
 
                 </div>
