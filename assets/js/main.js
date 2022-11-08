@@ -19,7 +19,7 @@ function getPokemonTypes(type){
 function handleAddPokemon(pokemon){ 
 
     return `
-    <li id="${pokemon.id}" class="card card__shadow" style = "${handleTypeColor(pokemon.types[0].type.name)}" value = "${pokemon.id}" onclick="getValue(this.value)">
+    <li id="${pokemon.id}" class="card card__shadow card__effect" style = "${handleTypeColor(pokemon.types[0].type.name)}" value = "${pokemon.id}" onclick="getValue(this.value)">
     
     <span id="number">${handleNumber(pokemon.id)}</span>
     <span id="name">${pokemon.name}</span>
@@ -39,7 +39,7 @@ function handleAddPokemon(pokemon){
 function handleAddPokemonOnFind(pokemon){ 
 
     return `
-    <li id="${pokemon.id}" class="card" style = "${handleTypeColor(pokemon.types[0].type.name)}" value = "${pokemon.id}" onclick="getValueOnFind(this.value)">
+    <li id="${pokemon.id}" class="card card__effect card__shadow" style = "${handleTypeColor(pokemon.types[0].type.name)}" value = "${pokemon.id}" onclick="getValueOnFind(this.value)">
     
     <span id="number">${handleNumber(pokemon.id)}</span>
     <span id="name">${pokemon.name}</span>
@@ -172,8 +172,7 @@ function handlePokemonAboutOnFind(pokemon){
                      <ul class="poke-navbar">
                         <li class="active t-about"> About</li>
                         <li class="t-base">Base Status</li>
-                        <li class="t-evolutions">Evolutions</li>
-                        <li class="t-moves">Moves</li>
+                    
                     </ul>
 
                 </div>
@@ -212,8 +211,7 @@ function handlePokemonAboutOnFind(pokemon){
 
                         
                         </li>
-                        <li class="t-evolutions">C</li>
-                        <li class="t-moves">D</li>
+                     
                     </ul>
 
                 </div>
